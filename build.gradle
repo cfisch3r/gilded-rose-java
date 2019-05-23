@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenLocal()
+    maven {
+        url = 'http://repo.maven.apache.org/maven2'
+    }
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.4.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.assertj:assertj-core:3.11.1'
+}
+
+group = 'de.agiledojo'
+version = '0.1-SNAPSHOT'
+sourceCompatibility = JavaVersion.VERSION_1_10
+
+test {
+    useJUnitPlatform()
+}

@@ -36,9 +36,10 @@ class GildedRoseTest {
         assertThat(items[0].sellIn).isEqualTo(4);
     }
 
-    @Test
-    void Item_Quality_never_drops_below_zero() {
-        Item[] items = singleItemList(5, 0);
+    @ParameterizedTest
+    @ValueSource(ints = { 5,0,-1 })
+    void Item_Quality_never_drops_below_zero(int sellIn) {
+        Item[] items = singleItemList(sellIn, 0);
         updateItems(items);
         assertThat(items[0].quality).isEqualTo(0);
     }

@@ -1,16 +1,18 @@
 package com.gildedrose;
 
-public class DefaultUpdatePolicy {
-    public DefaultUpdatePolicy() {
+public class DefaultUpdatePolicy extends AbstractUpdatePolicy {
+
+    public void update(Item item) {
+        decreaseQuality(item);
+
+        item.sellIn -= 1;
+
+        if (item.sellIn < 0)
+            decreaseQuality(item);
     }
 
-    void update(Item item) {
+    private void decreaseQuality(Item item) {
         if (item.quality > 0)
-            item.quality = item.quality - 1;
-
-        item.sellIn = item.sellIn - 1;
-
-        if (item.quality > 0 && item.sellIn < 0)
-            item.quality = item.quality - 1;
+            item.quality -= 1;
     }
 }

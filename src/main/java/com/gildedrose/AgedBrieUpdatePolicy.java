@@ -1,16 +1,24 @@
 package com.gildedrose;
 
-public class AgedBrieUpdatePolicy {
-    public AgedBrieUpdatePolicy() {
+class AgedBrieUpdatePolicy extends AbstractUpdatePolicy {
+
+    private static final String AGED_BRIE = "Aged Brie";
+
+    public void update(Item item) {
+        if (item.name.equals(AGED_BRIE)) {
+            increaseQuality(item);
+
+            item.sellIn -= 1;
+
+            if (item.sellIn < 0)
+                increaseQuality(item);
+        } else {
+            forward(item);
+        }
     }
 
-    void update(Item item) {
+    private void increaseQuality(Item item) {
         if (item.quality < 50)
-            item.quality = item.quality + 1;
-
-        item.sellIn = item.sellIn - 1;
-
-        if (item.quality < 50 && item.sellIn < 0)
-            item.quality = item.quality + 1;
+            item.quality += 1;
     }
 }

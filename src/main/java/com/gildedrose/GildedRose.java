@@ -13,6 +13,8 @@ class GildedRose {
                         if (items[i].quality < 50) {
                             items[i].quality = items[i].quality + 1;
                         }
+
+                    items[i].sellIn = items[i].sellIn - 1;
                 } else if(items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (items[i].quality < 50) {
                     items[i].quality = items[i].quality + 1;
@@ -32,17 +34,17 @@ class GildedRose {
                     }
                 }
 
+                items[i].sellIn = items[i].sellIn - 1;
+
             } else if (items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                 } else {
                     if (items[i].quality > 0) {
                         items[i].quality = items[i].quality - 1;
                     }
+
+                    items[i].sellIn = items[i].sellIn - 1;
                 }
 
-            if (items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
-            } else {
-                items[i].sellIn = items[i].sellIn - 1;
-            }
 
 
             if (items[i].name.equals("Aged Brie")) {

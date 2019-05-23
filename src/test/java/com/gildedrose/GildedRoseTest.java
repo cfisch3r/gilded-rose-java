@@ -9,12 +9,12 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("For general Items Gilded Rose")
+@DisplayName("Gilded Rose General Item Update Specification")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class GildedRoseTest {
 
     @Test
-    void reduces_Item_Quality_on_Update() {
+    void Item_Quality_is_reduces_on_Update() {
         Item[] items = singleItemList(5, 8);
         updateItems(items);
         assertThat(items[0].quality).isEqualTo(7);
@@ -23,21 +23,21 @@ class GildedRoseTest {
 
     @ParameterizedTest
     @ValueSource(ints = { 0,-1 })
-    void reduces_Item_Quality_twice_as_fast_after_sell_by_date(int sellIn) {
+    void Item_Quality_is_reduced_twice_as_fast_after_sell_by_date(int sellIn) {
         Item[] items = singleItemList(sellIn, 10);
         updateItems(items);
         assertThat(items[0].quality).isEqualTo(8);
     }
 
     @Test
-    void reduces_Item_Sell_In_on_Update() {
+    void Item_Sellin_is_reduces_on_Update() {
         Item[] items = singleItemList(5, 7);
         updateItems(items);
         assertThat(items[0].sellIn).isEqualTo(4);
     }
 
     @Test
-    void never_reduces_Item_Quality_below_zero() {
+    void Item_Quality_never_drops_below_zero() {
         Item[] items = singleItemList(5, 0);
         updateItems(items);
         assertThat(items[0].quality).isEqualTo(0);

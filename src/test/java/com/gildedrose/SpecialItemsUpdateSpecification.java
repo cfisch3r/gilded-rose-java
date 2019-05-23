@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("Gilded Rose")
+@DisplayName("As special Case Gilded Rose")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class SpecialItemsUpdateSpecification {
 

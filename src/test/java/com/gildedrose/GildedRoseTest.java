@@ -9,7 +9,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DisplayName("Gilded Rose")
+@DisplayName("For general Items Gilded Rose")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class GildedRoseTest {
 

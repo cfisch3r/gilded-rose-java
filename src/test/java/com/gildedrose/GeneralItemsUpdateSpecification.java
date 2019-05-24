@@ -5,13 +5,14 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("Gilded Rose General Item Update Specification")
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class GildedRoseTest {
+class GeneralItemsUpdateSpecification {
 
     @Test
     void Item_Quality_is_reduces_on_Update() {
@@ -37,9 +38,9 @@ class GildedRoseTest {
     }
 
     @ParameterizedTest
-    @ValueSource(ints = { 5,0,-1 })
-    void Item_Quality_never_drops_below_zero(int sellIn) {
-        Item[] items = singleItemList(sellIn, 0);
+    @EnumSource(SELLIN_PERIODS.class)
+    void Item_Quality_never_drops_below_zero(SELLIN_PERIODS sellinPeriod) {
+        Item[] items = singleItemList(sellinPeriod.value(), 0);
         updateItems(items);
         assertThat(items[0].quality).isEqualTo(0);
     }

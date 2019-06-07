@@ -4,3 +4,6 @@ target/
 
 build/
 .gradle/
+jgiven-reports/
+out/
+.DS_Store

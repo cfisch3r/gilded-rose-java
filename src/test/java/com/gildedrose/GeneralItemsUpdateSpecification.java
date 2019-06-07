@@ -1,56 +1,50 @@
 package com.gildedrose;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator;
+import com.tngtech.jgiven.annotation.ScenarioStage;
+import com.tngtech.jgiven.junit5.JGivenExtension;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-@DisplayName("Gilded Rose General Item Update Specification")
-@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@ExtendWith(JGivenExtension.class)
 class GeneralItemsUpdateSpecification {
+
+    @ScenarioStage
+    GildedRoseScenario scenario;
 
     @Test
     void Item_Quality_is_reduces_on_Update() {
-        Item[] items = singleItemList(5, 8);
-        updateItems(items);
-        assertThat(items[0].quality).isEqualTo(7);
+        scenario
+                .given().an_item_with_Sellin_of_$_and_Quality_of_$(5,8)
+                .when().items_are_updated()
+                .then().Qualitity_of_the_item_is(7);
     }
 
 
     @ParameterizedTest
-    @ValueSource(ints = { 0,-1 })
-    void Item_Quality_is_reduced_twice_as_fast_after_sell_by_date(int sellIn) {
-        Item[] items = singleItemList(sellIn, 10);
-        updateItems(items);
-        assertThat(items[0].quality).isEqualTo(8);
+    @EnumSource(value = SELLIN_PERIODS.class, names = { "ON_SELL_BY_DATE", "AFTER_SELL_BY_DATE" })
+    void Item_Quality_is_reduced_twice_as_fast_after_sell_by_date(SELLIN_PERIODS sellInPeriod) {
+        scenario
+                .given().an_item_with_Sellin_of_$_and_Quality_of_$(sellInPeriod,10)
+                .when().items_are_updated()
+                .then().Qualitity_of_the_item_is(8);
     }
 
     @Test
     void Item_Sellin_is_reduces_on_Update() {
-        Item[] items = singleItemList(5, 7);
-        updateItems(items);
-        assertThat(items[0].sellIn).isEqualTo(4);
+        scenario
+                .given().an_item_with_Sellin_of_$_and_Quality_of_$(5,7)
+                .when().items_are_updated()
+                .then().SellIn_of_the_item_is(4);
     }
 
     @ParameterizedTest
     @EnumSource(SELLIN_PERIODS.class)
     void Item_Quality_never_drops_below_zero(SELLIN_PERIODS sellinPeriod) {
-        Item[] items = singleItemList(sellinPeriod.value(), 0);
-        updateItems(items);
-        assertThat(items[0].quality).isEqualTo(0);
-    }
-
-    private Item[] singleItemList(int sellIn, int quality) {
-        return new Item[]{new Item("", sellIn, quality)};
-    }
-
-    private void updateItems(Item[] items) {
-        GildedRose app = new GildedRose(items);
-        app.updateQuality();
+        scenario
+                .given().an_item_with_Sellin_of_$_and_Quality_of_$(sellinPeriod,0)
+                .when().items_are_updated()
+                .then().Qualitity_of_the_item_is(0);
     }
 }

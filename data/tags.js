@@ -1,0 +1,1 @@
+jgivenReport.setTags({"tagTypeMap":{"org.junit.jupiter.api.Tag":{"fullType":"org.junit.jupiter.api.Tag","type":"Tag","description":"JUnit 5 Tag","color":"orange","href":""}},"tags":{"org.junit.jupiter.api.Tag-WTF":{"tagType":"org.junit.jupiter.api.Tag","value":"WTF"}}} );

@@ -1,11 +1,9 @@
 language: java
 install: true
 jdk: openjdk12
-install:
-  - npm install -g --silent gh-pages
 script:
   - "./gradlew test jgivenTestReport"
-  - "git config user.email \"ci@agiledojo.de"
+  - "git config user.email \"ci@agiledojo.de\""
   - "git config user.name \"CI\""
   - "gh-pages --dist build/reports/jgiven/test/html"
 before_install:

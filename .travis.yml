@@ -14,4 +14,4 @@ before_install:
 - eval $(ssh-agent -s)
 - ssh-add key
 - sudo apt-get update
-- sudo apt-get npm
+- sudo apt-get install npm

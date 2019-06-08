@@ -6,6 +6,7 @@ script:
   - "git config user.email \"ci@agiledojo.de\""
   - "git config user.name \"CI\""
   - "npm install -g --silent gh-pages"
+  - "ssh-add -L"
   - "gh-pages --dist build/reports/jgiven/test/html"
 before_install:
 - openssl aes-256-cbc -K $encrypted_716a67714777_key -iv $encrypted_716a67714777_iv -in key.enc -out key -d

@@ -5,11 +5,5 @@ install:
   - ./ci/install_packages.sh
 script:
   - ./gradlew test jgivenTestReport
-before_deploy:
   - ./ci/setup_ssh_key.sh
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: ./ci/deploy_docs.sh
-  on:
-    branch: master
+  - ./ci/deploy_docs.sh

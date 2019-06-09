@@ -1,13 +1,12 @@
 language: java
 jdk: openjdk12
 
-before_install:
-- ./ci/setup_ssh_key.sh
 install:
   - ./ci/install_packages.sh
 script:
   - ./gradlew test jgivenTestReport
-  -
+before_deploy:
+  - ./ci/setup_ssh_key.sh
 deploy:
   skip_cleanup: true
   provider: script

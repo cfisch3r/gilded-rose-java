@@ -5,5 +5,4 @@ install:
   - ./ci/install_packages.sh
 script:
   - ./gradlew test jgivenTestReport
-  - ./ci/setup_ssh_key.sh
   - ./ci/deploy_docs.sh

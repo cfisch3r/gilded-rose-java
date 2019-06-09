@@ -8,6 +8,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
 @ExtendWith(JGivenExtension.class)
+@BusinessRuleSpecification("Updates on General Items")
 class GeneralItemsUpdateSpecification {
 
     @ScenarioStage

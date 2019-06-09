@@ -7,9 +7,10 @@ install:
   - ./ci/install_packages.sh
 script:
   - ./gradlew test jgivenTestReport
+  -
 deploy:
   skip_cleanup: true
   provider: script
-  script: ./ci/deploy_doc.sh
+  script: ./ci/deploy_docs.sh
   on:
     branch: master

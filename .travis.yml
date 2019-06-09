@@ -2,7 +2,7 @@ language: java
 jdk: openjdk12
 
 before_install:
-- ./ci/install_ssh_key.sh
+- ./ci/setup_ssh_key.sh
 install:
   - ./ci/install_packages.sh
 script:

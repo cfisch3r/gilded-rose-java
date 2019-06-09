@@ -44,7 +44,7 @@ class SpecialItemsUpdateSpecification {
     }
 
     @Test
-    @Tag("WTF")
+    @UnexpectedBehaviour
     void Quality_Of_Brie_increases_twice_as_fast_after_sell_by_date() {
         scenario
                 .given().item_$_with_Sellin_of_$_and_Quality_of_$(ITEM_NAMES.AGED_BRIE.getName(),0,10)

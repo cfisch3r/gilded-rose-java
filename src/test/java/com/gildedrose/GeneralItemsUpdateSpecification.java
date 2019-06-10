@@ -1,21 +1,18 @@
 package com.gildedrose;
 
 import com.tngtech.jgiven.annotation.ScenarioStage;
-import com.tngtech.jgiven.junit5.JGivenExtension;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
-@ExtendWith(JGivenExtension.class)
-@BusinessRuleSpecification("Updates on General Items")
+@BusinessCaseSpecification("Updates on General Items")
 class GeneralItemsUpdateSpecification {
 
     @ScenarioStage
     GildedRoseScenario scenario;
 
     @Test
-    void Item_Quality_is_reduces_on_Update() {
+    void Item_Quality_is_reduced_on_Update() {
         scenario
                 .given().an_item_with_Sellin_of_$_and_Quality_of_$(5,8)
                 .when().items_are_updated()

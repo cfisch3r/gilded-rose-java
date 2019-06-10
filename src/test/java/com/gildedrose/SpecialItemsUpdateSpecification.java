@@ -1,15 +1,12 @@
 package com.gildedrose;
 
 import com.tngtech.jgiven.annotation.ScenarioStage;
-import com.tngtech.jgiven.junit5.JGivenExtension;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-@ExtendWith(JGivenExtension.class)
-@BusinessRuleSpecification("Updates on Special Items")
+@BusinessCaseSpecification("Updates on Special Items")
 class SpecialItemsUpdateSpecification {
 
     private static final int MAX_QUALITY = 50;

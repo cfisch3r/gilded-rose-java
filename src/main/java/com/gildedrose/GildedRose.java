@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-class GildedRose {
+public class GildedRose {
     Item[] items;
     private UpdatePolicy updatePolicy = UpdatePolicyFactory.create();
 

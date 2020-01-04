@@ -1,4 +1,4 @@
-package com.gildedrose;
+package com.gildedrose.tags;
 
 import com.tngtech.jgiven.annotation.IsTag;
 import com.tngtech.jgiven.junit5.JGivenExtension;
